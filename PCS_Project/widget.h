@@ -8,6 +8,8 @@
 #include "qcustomplot.h"
 #include "blocks/gain/gain.h"
 #include "lintegrator.h"
+#include "controlmodel.h"
+#include "discretecontrolmodel.h"
 
 class Generator;
 
@@ -27,6 +29,8 @@ public slots:
     void update();
 
 private:
+   // void updateDraw();
+
     Ui::Widget *ui;
     QGridLayout *mainlayout;
     QCustomPlot *inputPlot;
@@ -46,6 +50,9 @@ private:
     Gain *object;   // <=
     LIntegrator* intergrator;
     Generator* generator;
+    ControlModel* controlModel;
+    DiscreteControlModel* discreteModel;
+    DiscreteControlModel* discreteGenerator;
     // --------------------------
     // Add pointer to the object here
     // --------------------------

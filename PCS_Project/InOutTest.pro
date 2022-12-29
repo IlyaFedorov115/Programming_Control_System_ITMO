@@ -24,19 +24,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
+    controlmodel.cpp \
+    discretecontrolmodel.cpp \
     generator.cpp \
     lintegrator.cpp \
         main.cpp \
-    myintegrator.cpp \
         widget.cpp \
     qcustomplot.cpp \
     blocks/gain/gain.cpp
 
 HEADERS += \
     constans.h \
+    controlmodel.h \
+    discretecontrolmodel.h \
     generator.h \
     lintegrator.h \
-    myintegrator.h \
         widget.h \
     main.h \
     qcustomplot.h \

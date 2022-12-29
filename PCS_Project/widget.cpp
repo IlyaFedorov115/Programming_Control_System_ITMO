@@ -1,14 +1,25 @@
 #include "widget.h"
 #include "ui_widget.h"
 #include "generator.h"
+#include "constans.h"
 #include <iostream>
 #include <math.h>
 #include <vector>
+#include <QVector>
 // --------------------------
 // Set stop time here
 // --------------------------
 #define ENDOFTIME 100
 #define SAMPLINGTIMEMSEC 200
+
+#define LEFT_Y_MIN -0
+#define LEFT_Y_MAX 5
+
+#define RIGHT_Y_MIN -0
+#define RIGHT_Y_MAX 5
+
+#define STEPS_GRAPH
+
 // --------------------------
 // Set stop time here
 // --------------------------
@@ -65,23 +76,51 @@ Widget::Widget(QWidget *parent) :
     // --------------------------
     // Set axes ranges so see all data:
     inputPlot->xAxis->setRange(0, ENDOFTIME);
-    inputPlot->yAxis->setRange(-5, 5);
+    inputPlot->yAxis->setRange(LEFT_Y_MIN, LEFT_Y_MAX);
     outputPlot->xAxis->setRange(0, ENDOFTIME);
-    outputPlot->yAxis->setRange(-5, 5);
+    outputPlot->yAxis->setRange(RIGHT_Y_MIN, RIGHT_Y_MAX);
 
     // --------------------------
     // Create the object here
     // --------------------------
+
+    /** CREATE INTEGRATOR */
+
     object = new Gain(2.0);
     intergrator = new LIntegrator(-1.0);
 
+
+
+    /** CREATE GENERATOR */
     std::vector<double> states_;
     states_.push_back(0.0); states_.push_back(1.0); states_.push_back(1.0);
-
     std::vector<double> gains_;
     gains_.push_back(-0.25); gains_.push_back(-0.5);
-
     generator = new Generator(states_, gains_);
+
+
+    /** CREATE DISCRETE GENERATOR */
+    QVector<double> xStGen {1.0, 0.0, 1.0};
+    discreteGenerator = new DiscreteControlModel(getDGeneratorA1(), DGeneratorB, DGeneratorC, DGeneratorD, xStGen, 0.0);
+
+    /** CREATE CONTROL MODEL */
+
+    QVector<double> statesModel;
+    statesModel.push_back(0.0);
+    statesModel.push_back(0.0);
+    statesModel.push_back(0.0);
+    QVector<QPair<double, double>> gainsModel;
+    gainsModel.push_back(QPair<double, double>(-4.0, 0.0));
+    gainsModel.push_back(QPair<double, double>(-4.0, 0.0));
+    gainsModel.push_back(QPair<double, double>(-1.0, 1.0));
+    QPair<double, double> sigGain(1.0, 1.0);
+    controlModel = new ControlModel(statesModel, gainsModel, sigGain);
+
+
+    /** CREATE DISCRETE CONTROL MODEL */
+    QVector<double> xSt {1.0, 1.0, 0.0};
+    discreteModel = new DiscreteControlModel(getAdt1(), GpssConB1, GpssConC, GpssConD, xSt, 0.0);
+
     // --------------------------
     // Create the object here
     // --------------------------
@@ -111,6 +150,10 @@ Widget::~Widget()
     // Delete the object here
     // --------------------------
     delete object;
+    delete intergrator;
+    delete generator;
+    delete controlModel;
+    delete discreteModel;
     // --------------------------
     // Delete the object here
     // --------------------------
@@ -118,21 +161,10 @@ Widget::~Widget()
 
 void Widget::update() {
 
-	// --------------------------
-	// Replace input signal with ours
-	// --------------------------
 	double signal = std::sin(relativeTime / 1000.0);
-	// --------------------------
-	// Replace input signal with ours
-	// --------------------------
 
-	// --------------------------
-	// Plot initial values here
-	// --------------------------
 	if (startTime == 0) {
-		// First step only plot initial values
 		startTime = QDateTime::currentMSecsSinceEpoch();
-
 		inputPlot->graph(0)->addData(0.0, 0);
 		outputPlot->graph(0)->addData(0.0, 0);
 		return;
@@ -142,10 +174,22 @@ void Widget::update() {
 		dt = relativeTime - dt;
 	}
 
-	inputPlot->graph(0)->addData(relativeTime / 1000.0, signal);
+    /** DRAW LEFT */
+    //inputPlot->graph(0)->addData(relativeTime / 1000.0, signal);
+    inputPlot->graph(0)->addData(relativeTime / 1000.0, this->controlModel->update(1, dt / 1000.0));
+
+
+    /** DRAW RIGHT */
     //outputPlot->graph(0)->addData(relativeTime / 1000.0, object->update(signal));
     //outputPlot->graph(0)->addData(relativeTime / 1000.0, intergrator->update(signal, dt / 1000.0));
-    outputPlot->graph(0)->addData(relativeTime / 1000.0, generator->update(signal, dt / 1000.0));
+    //outputPlot->graph(0)->addData(relativeTime / 1000.0, generator->update(signal, dt / 1000.0));
+    //outputPlot->graph(0)->addData(relativeTime / 1000.0, controlModel->update(signal, dt / 1000.0));
+
+    // curr state рисовать чтобы получить
+#ifdef STEPS_GRAPH
+    outputPlot->graph(0)->addData(relativeTime / 1000.0, discreteModel->getState());
+#endif
+    outputPlot->graph(0)->addData(relativeTime / 1000.0, discreteModel->update(1, dt / 1000.0));
 
     inputPlot->replot();
     outputPlot->replot();
