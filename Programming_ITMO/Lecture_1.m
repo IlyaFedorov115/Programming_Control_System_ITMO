@@ -1,7 +1,7 @@
 num = [1 4 4 2];
 den = [1 4 4 1];
 
-Gp = tf(num, den)
+Gp = tf(num, den);
 
 % observable form
 GpssObs = canon(Gp,'companion');
@@ -10,7 +10,7 @@ GpssObsB = GpssObs.B;
 GpssObsC = GpssObs.C;
 GpssObsD = GpssObs.D;
 
-% controll form (not sure)
+% controll form 
 GpssConA = GpssObsA.';
 GpssConB = GpssObsC.';
 GpssConC = GpssObsB.';
