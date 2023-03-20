@@ -2,6 +2,8 @@
 
 # Ход работы
 
+Справедливо для файла filename = 'process_log_13_03_2023_11_19_37.csv';
+
 ![изображение](https://user-images.githubusercontent.com/42892348/226342851-df066639-c5dd-418a-b645-8c8ce1d8695c.png)
 
 Фильтрация по умолчанию
@@ -20,6 +22,34 @@ a0 = 0.5452;
 Фильтрация при использовании lowpass
 
 ![изображение](https://user-images.githubusercontent.com/42892348/226343418-b3368779-e63c-4c1f-8032-db25c6771561.png)
+
+
+**Для более сложной гармоники имеем следующее:**
+
+![изображение](https://user-images.githubusercontent.com/42892348/226349097-2e4715b8-cd38-452a-8f6e-56d2bd37c2fd.png)
+
+![изображение](https://user-images.githubusercontent.com/42892348/226349213-80d58afb-ed20-46b3-94b9-66ac07f11769.png)
+
+![изображение](https://user-images.githubusercontent.com/42892348/226349355-1ad4811e-80c3-41df-8815-6e3db2ca00b0.png)
+
+![изображение](https://user-images.githubusercontent.com/42892348/226349435-d4069341-53c6-4ff9-933d-f8b84dfab434.png)
+
+Моделирование для параметров:
+
+b = 0.9827; b = 1.028;
+a1 = 2.9780; a1 = 3.1619;
+a0 = 0.5452; a0 = 0.5905;
+
+Для первой тройки:
+
+![изображение](https://user-images.githubusercontent.com/42892348/226349850-b1ef1779-e163-44c9-bcec-df089ed4aa65.png)
+
+
+Для последней тройки:
+
+![изображение](https://user-images.githubusercontent.com/42892348/226349697-185b2a0a-7506-4ae3-9972-d339d5192cc8.png)
+
+
 
 
 
