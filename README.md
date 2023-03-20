@@ -50,6 +50,13 @@ a0 = 0.5452; a0 = 0.5905;
 ![изображение](https://user-images.githubusercontent.com/42892348/226349697-185b2a0a-7506-4ae3-9972-d339d5192cc8.png)
 
 
+# Настройка Пид регулятора
+
+Вот неплохие параметры, но попробую лучше
+
+![изображение](https://user-images.githubusercontent.com/42892348/226409939-dd6d6c78-8f7c-46cc-b1f1-a80c12ceb697.png)
+
+
 
 
 
