@@ -98,6 +98,9 @@ a0 = 0.5452; a0 = 0.5905;
 
 ![изображение](https://user-images.githubusercontent.com/42892348/226425709-e331f220-de0b-4176-a426-e4f0a5aa429d.png)
 
+Можно каноническую получить
+
+![изображение](https://user-images.githubusercontent.com/42892348/226427084-58295f57-1c99-4f16-b40e-1e7850c9de9c.png)
 
 
 
