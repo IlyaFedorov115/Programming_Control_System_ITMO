@@ -3,7 +3,10 @@
 
 
 dir = '/home/ilya/Matlab_Folder/Programming_Control_System/win10/';
+
 filename = 'process_log_10_03_2023_09_46_42.csv';
+filename = 'process_log_13_03_2023_11_19_37.csv';
+
 data = readmatrix(strcat(dir, filename));
 
 % Extract the columns into separate arrays
