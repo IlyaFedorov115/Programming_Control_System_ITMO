@@ -11,6 +11,7 @@ bool_plot_V_dv_before_filt = 0;
 
 dir = '/home/ilya/Matlab_Folder/Programming_Control_System/win10/';
 filename = 'process_log_13_03_2023_11_19_37.csv';
+filename = 'process_log_20_03_2023_06_07_31.csv';
 data = readmatrix(strcat(dir, filename));
 
 % Extract the columns into separate arrays
@@ -114,23 +115,24 @@ grid on;
 
 
 %
-% Calc coefficients for W(s)
+% Calc coefficients for W(s) without lowpass
 %
 alpha_filt = 0.025;
-
-
 
 Q = [colU(1:end-2) V_filt(1:end-1) Y_filt(1:end-2)];
 Qt = pinv(Q);
 params = Qt * dV_filt;
-
 b = params(1)
 a1 = -params(2)
 a0 = -params(3)
 
-b = 0.9827;
-a1 = 2.9780;
-a0 = 0.5452;
+
+%
+% Modeling with lowpass parameters
+%
+b = 0.9827; %b = 1.028;
+a1 = 2.9780; %a1 = 3.1619;
+a0 = 0.5452; %a0 = 0.5905;
 
 W_model = tf(b, [1 a1 a0]);
 t_for_filt = 0:alpha_filt:((size(colU)-1)*alpha_filt);
@@ -141,8 +143,9 @@ hold on;
 plot(colT, colY);
 grid on;
 legend('Simulation', 'Qt');
-%X = [dV_filt, V_filt(1:end-1), Y_filt(1:end-2)];
-%params = inv(X' * X) * X' * Y_filt(1:end-2)
+
+
+
 
 
 
@@ -197,6 +200,12 @@ params = Qt * dV_filt;
 b = params(1)
 a1 = -params(2)
 a0 = -params(3)
+
+
+b = 0.9827; %b = 1.028;
+a1 = 2.9780; %a1 = 3.1619;
+a0 = 0.5452; %a0 = 0.5905;
+
 %вход не фильтровать он сами задаем
 
 %tf_obj = tf(num, den);
