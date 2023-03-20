@@ -56,6 +56,29 @@ a0 = 0.5452; a0 = 0.5905;
 
 ![изображение](https://user-images.githubusercontent.com/42892348/226409939-dd6d6c78-8f7c-46cc-b1f1-a80c12ceb697.png)
 
+Вот более подходящие параметры
+
+![изображение](https://user-images.githubusercontent.com/42892348/226413359-51842185-08b8-4786-8aab-578191731f8f.png)
+
+Вот график передаточной
+
+![изображение](https://user-images.githubusercontent.com/42892348/226413651-4db4aac3-a36d-4fab-9ddd-8b9633d45f05.png)
+
+Входит в 5% окно
+
+![изображение](https://user-images.githubusercontent.com/42892348/226413753-9f7ed0ed-04ea-40a3-82f5-0f0872a20f06.png)
+
+График ошибки
+
+![изображение](https://user-images.githubusercontent.com/42892348/226414246-e6f003ae-73d6-4a12-b16c-8f5d3fa971eb.png)
+
+
+Схема модели:
+
+![изображение](https://user-images.githubusercontent.com/42892348/226414416-b2a1c527-6d83-4b6c-8c4a-f0f7e75c9a02.png)
+
+
+
 
 
 
