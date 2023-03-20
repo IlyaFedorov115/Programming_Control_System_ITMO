@@ -84,6 +84,20 @@ a0 = 0.5452; a0 = 0.5905;
 ![изображение](https://user-images.githubusercontent.com/42892348/226415921-df74be8e-8439-47d6-a3fc-db671b1e8e68.png)
 
 
+# Передаточная ПИД регулятора и форма в пространстве состояния
+
+![изображение](https://user-images.githubusercontent.com/42892348/226425269-e8c27a05-6dd2-4ed7-ba6d-e2884af37adc.png)
+
+![изображение](https://user-images.githubusercontent.com/42892348/226425376-2753bb61-e774-4366-b8aa-29710000d5e5.png)
+
+Подставим в модель Симулинк
+
+![изображение](https://user-images.githubusercontent.com/42892348/226425514-981a8f26-71c7-46e0-bdf7-3291144dd87e.png)
+
+![изображение](https://user-images.githubusercontent.com/42892348/226425579-b1cfa312-b8c9-402a-882d-acd59fd5a800.png)
+
+![изображение](https://user-images.githubusercontent.com/42892348/226425709-e331f220-de0b-4176-a426-e4f0a5aa429d.png)
+
 
 
 
