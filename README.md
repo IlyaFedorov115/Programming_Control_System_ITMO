@@ -103,6 +103,11 @@ a0 = 0.5452; a0 = 0.5905;
 ![изображение](https://user-images.githubusercontent.com/42892348/226427084-58295f57-1c99-4f16-b40e-1e7850c9de9c.png)
 
 
+Для непрерывного ПИД
+
+![image](https://user-images.githubusercontent.com/42892348/227721454-a16609fc-c517-465c-a4ab-355285b7780a.png)
+
+
 
 https://www.youtube.com/watch?v=9Z0pkDSp4I8
 
